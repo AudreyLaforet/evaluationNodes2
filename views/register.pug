@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  .container
+    .row
+      .col-md-6.offset-md-3
+        h1.text-center Register
+        if errors
+          .alert.alert-danger
+            ul
+              each error in errors
+                li= error.msg
+        form(method='POST', action='/api/users/register')
+          .form-group
+            label(for='firstName') First Name
+            input.form-control(type='text', id='firstName', name='firstName', required=true, value='test')
+          .form-group
+            label(for='lastName') Last Name
+            input.form-control(type='text', id='lastName', name='lastName', required=true, value='test')
+          .form-group
+            label(for='email') Email
+            input.form-control(type='email', id='email', name='email', required=true, value='test@gmail.com')
+          .form-group
+            label(for='password') Password
+            input.form-control(type='password', id='password', name='password', required=true, value='123456')
+          .form-group
+            label(for='confirmPassword') Confirm Password
+            input.form-control(type='password', id='confirmPassword', name='confirmPassword', required=true, , value='123456')
+          button.btn.btn-primary(type='submit') Register
